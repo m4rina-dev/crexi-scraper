@@ -1,0 +1,81 @@
+{
+  "title": "Crexi Commercial Real Estate Scraper Input",
+  "description": "Configure the scraper to extract commercial real estate listings from Crexi.com. Provide search result URLs or direct property URLs to start scraping.",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "startUrls": {
+      "title": "Start URLs",
+      "type": "array",
+      "description": "List of Crexi.com URLs to start scraping from. Can include search result pages or direct property listing URLs. The scraper will automatically detect the page type and handle accordingly.",
+      "editor": "requestListSources",
+      "prefill": [
+        {
+          "url": "https://www.crexi.com/properties/search?query=Los%20Angeles,%20CA,%20USA"
+        }
+      ],
+      "minItems": 1
+    },
+    "maxCrawlPages": {
+      "title": "Max pages to crawl",
+      "type": "integer",
+      "description": "Maximum number of property detail pages to scrape. Use this to limit the number of results.",
+      "minimum": 1,
+      "default": 100,
+      "maximum": 10000,
+      "unit": "pages"
+    },
+    "maxCrawlDepth": {
+      "title": "Max crawl depth",
+      "type": "integer",
+      "description": "Maximum depth of links to follow from the start URLs. Depth 0 means only start URLs, depth 1 includes pages linked from start URLs, etc.",
+      "minimum": 0,
+      "default": 2,
+      "maximum": 10
+    },
+    "maxConcurrency": {
+      "title": "Max concurrency",
+      "type": "integer",
+      "description": "Maximum number of pages to process concurrently. Higher values = faster scraping but more resource usage. Recommended: 3-10.",
+      "minimum": 1,
+      "default": 5,
+      "maximum": 20
+    },
+    "proxyConfiguration": {
+      "title": "Proxy configuration",
+      "type": "object",
+      "description": "Proxy settings to use for requests. Using proxies is highly recommended to avoid being blocked by Crexi.com.",
+      "editor": "proxy",
+      "default": {
+        "useApifyProxy": true
+      },
+      "prefill": {
+        "useApifyProxy": true
+      }
+    },
+    "waitForDynamicContent": {
+      "title": "Wait for dynamic content (seconds)",
+      "type": "integer",
+      "description": "Additional time to wait for Angular/JavaScript content to fully load on each page. Increase if data is missing.",
+      "minimum": 0,
+      "default": 2,
+      "maximum": 10,
+      "unit": "seconds"
+    },
+    "includeDetailedKeyValues": {
+      "title": "Include all property details",
+      "type": "boolean",
+      "description": "Extract all key-value pairs from the property details table (e.g., Zoning, Tenancy, etc.). This provides more comprehensive data.",
+      "default": true
+    },
+    "debugMode": {
+      "title": "Debug mode",
+      "type": "boolean",
+      "description": "Enable verbose logging for troubleshooting. Logs will include detailed information about page loading and element extraction.",
+      "default": false
+    }
+  },
+  "required": [
+    "startUrls"
+  ]
+}
