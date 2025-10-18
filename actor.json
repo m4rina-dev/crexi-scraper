@@ -1,0 +1,69 @@
+{
+  "actorSpecification": 1,
+  "name": "crexi-scraper",
+  "title": "Crexi Commercial Real Estate Scraper",
+  "description": "Scrape commercial real estate listings from Crexi.com including properties, prices, descriptions, and detailed property information. Supports both search result pages and direct property URLs.",
+  "version": "1.0",
+  "license": "Apache-2.0",
+  "meta": {
+    "templateId": "ts-start"
+  },
+  "input": "./INPUT_SCHEMA.json",
+  "readme": "./README.md",
+  "categories": [
+    "REAL_ESTATE",
+    "SCRAPER"
+  ],
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "title": "Crexi Properties",
+      "description": "Dataset containing scraped commercial real estate properties from Crexi.com",
+      "views": {
+        "overview": {
+          "title": "Overview",
+          "transformation": {
+            "fields": [
+              "title",
+              "price",
+              "address",
+              "propertyType",
+              "squareFootage",
+              "url"
+            ]
+          },
+          "display": {
+            "component": "table",
+            "properties": {
+              "title": {
+                "label": "Property Title",
+                "format": "text"
+              },
+              "price": {
+                "label": "Price",
+                "format": "text"
+              },
+              "address": {
+                "label": "Address",
+                "format": "text"
+              },
+              "propertyType": {
+                "label": "Type",
+                "format": "text"
+              },
+              "squareFootage": {
+                "label": "Square Footage",
+                "format": "text"
+              },
+              "url": {
+                "label": "URL",
+                "format": "link"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "platform": "linux/amd64"
+}
