@@ -1,0 +1,35 @@
+{
+  "name": "crexi-scraper",
+  "version": "1.0.0",
+  "description": "Production-ready Apify Actor for scraping commercial real estate listings from Crexi.com",
+  "type": "module",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "npm run build && node dist/main.js",
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "apify",
+    "actor",
+    "crexi",
+    "real-estate",
+    "scraper",
+    "commercial-real-estate"
+  ],
+  "author": "Your Name",
+  "license": "ISC",
+  "dependencies": {
+    "apify": "^3.2.0",
+    "crawlee": "^3.7.0",
+    "puppeteer": "^21.11.0",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
